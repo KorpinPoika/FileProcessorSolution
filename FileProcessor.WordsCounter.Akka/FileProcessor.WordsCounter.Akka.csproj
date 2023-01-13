@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>FileProcessor.WordsCounter.Akkas</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Akka" Version="1.5.0-alpha3" />
+    <PackageReference Include="Akka.Streams" Version="1.5.0-alpha3" />
+    <PackageReference Include="Microsoft.Composition" Version="1.0.31" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileProcessorTool.Interfaces\FileProcessorTool.Interfaces.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>FileProcessor.App</RootNamespace>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <LangVersion>7.1</LangVersion>
+    <Version>1.0.0.3</Version>
+    <Authors>AG</Authors>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileProcessor.WordsCounter.Akka\FileProcessor.WordsCounter.Akka.csproj" />
+    <ProjectReference Include="..\FileProcessor.WordsCounter\FileProcessor.WordsCounter.csproj" />
+    <ProjectReference Include="..\FileProcessorTool.Interfaces\FileProcessorTool.Interfaces.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Composition" Version="1.0.31" />
+    <PackageReference Include="Microsoft.Extensions.CommandLineUtils" Version="1.1.1" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="vm.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Remove="stat.txt" />
+  </ItemGroup>
+</Project>
