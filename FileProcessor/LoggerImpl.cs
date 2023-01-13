@@ -10,14 +10,7 @@ namespace FileProcessor.App
     [Export(typeof(ILoggerFacade))]
     public class LoggerImpl: ILoggerFacade
     {
-        private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        private static readonly LoggerFactory _loggerFactory = new LoggerFactory();
-        
-        static LoggerImpl()
-        {
-            _loggerFactory.AddNLog(new NLogProviderOptions { CaptureMessageTemplates = true, CaptureMessageProperties = true });
-            LogManager.LoadConfiguration("nlog.config");
-        }
+        private static readonly Logger _logger = LogManager.LoadConfiguration("nlog.config").GetCurrentClassLogger();
 
         public void Info(string message)
         {

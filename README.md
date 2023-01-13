@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@KorpinPoika 
-KorpinPoika
-/
-FileProcessorSolution
-Public
-Cannot fork because you own this repository and are not a member of any organizations.
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-FileProcessorSolution/TestData/testTask.txt
-@KorpinPoika
-KorpinPoika Added project files
-Latest commit 431d59e 1 hour ago
- History
- 1 contributor
-16 lines (15 sloc)  1.06 KB
-
 Тестовое Задание:
 Составить частотный словарь для заданного текстового файла.
 
@@ -45,18 +14,4 @@ Latest commit 431d59e 1 hour ago
 5) Иметь модульную декомпозицию и содержать юнит тесты.
 6) Обладать архитектурой удобной для дальнейшего расширения функциональности.
 7) Иметь описание архитектуры в любом удобном виде.
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-FileProcessorSolution/testTask.txt at master · KorpinPoika/FileProcessorSolution
+
