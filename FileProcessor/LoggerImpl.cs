@@ -12,9 +12,6 @@ namespace FileProcessor.App
     {
         private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private static readonly LoggerFactory _loggerFactory = new LoggerFactory();
-
-        //private static readonly Logger _logger = NLogBuilder.
-
         
         static LoggerImpl()
         {
