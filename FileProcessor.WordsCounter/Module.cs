@@ -33,8 +33,8 @@ namespace FileProcessor.WordsCounter
         );
 
         public IEnumerable<Argument> Arguments => new Collection<Argument> {
-            new Argument { Key = $"-{Keys.Input}|--input:<inputFile>",    Description = "Input text file" },
-            new Argument { Key = $"-{Keys.Output}|--output:<outputFile>", Description = "Output file" }
+            new Argument { Key = $"-{Keys.Input}|--input <inputFile>",    Description = "Input text file" },
+            new Argument { Key = $"-{Keys.Output}|--output <outputFile>", Description = "Output file" }
         };
 
         public Task RunAsync(IEnumerable<Argument> arguments)

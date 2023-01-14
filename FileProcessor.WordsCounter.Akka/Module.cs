@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Composition;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Akka.Actor;
@@ -31,8 +32,8 @@ namespace FileProcessor.WordsCounter.Akkas
         );
 
         public IEnumerable<Argument> Arguments => new Collection<Argument> {
-            new Argument { Key = $"-i|--input:<inputFile>",    Description = "Input text file" },
-            new Argument { Key = $"-o|--output:<outputFile>", Description = "Output file" }
+            new Argument { Key = $"-i|--input <inputFile>",    Description = "Input text file" },
+            new Argument { Key = $"-o|--output <outputFile>", Description = "Output file" }
         };
 
         public async Task RunAsync(IEnumerable<Argument> arguments)
@@ -44,6 +45,9 @@ namespace FileProcessor.WordsCounter.Akkas
             using (var system = ActorSystem.Create("system"))
             using (var materializer = system.Materializer())
             {
+                var timer = new Stopwatch();
+                timer.Start();
+                
                 var props = LinesPublisher.Props( argumentList.Single(x => x.Key.StartsWith("i")).Value );
                 var source = Source.ActorPublisher<string>(props);
 
@@ -58,18 +62,23 @@ namespace FileProcessor.WordsCounter.Akkas
                 await source.RunForeach(
                     line => parser.Forward(line),
                     materializer
-                );
+                )
+                .ConfigureAwait(false);
 
                 var allWords = await wcActor.Ask<int>(
                     new WordsCounterActor.WriteResultMessage {
                         OutputFilePath = argumentList.Single(x => x.Key.StartsWith("o")).Value
                     }
-                );
+                )
+                .ConfigureAwait(false);
+                
+                timer.Stop();
 
                 _logger.Info($" ## allWords:{allWords} ##");
+                _logger.Info($"Execution time is {timer.Elapsed}");
             }
 
-            _logger.Info("~~~~~~~` akka has done ~~~~~");
+            _logger.Info("~~~~~~~ akka has done ~~~~~");
         }
     }
 }
